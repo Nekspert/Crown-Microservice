@@ -5,8 +5,8 @@ from sqlalchemy import engine_from_config, pool
 
 from app.core.config import config as app_config
 from app.infrastructure.db.models.base import Base
-from app.infrastructure.db.models.tender import TenderModel
-from app.infrastructure.db.models.tender_history import TenderHistoryModel
+from app.infrastructure.db.models.tender import TenderModel  # noqa: F401
+from app.infrastructure.db.models.tender_history import TenderHistoryModel  # noqa: F401
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
