@@ -1,0 +1,30 @@
+name: Python Code Linting
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Setup python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install poetry
+        run: pip install poetry
+
+      - name: Install dev dependencies
+        run: poetry install --only dev --no-root
+        env:
+          POETRY_VIRTUALENVS_CREATE: "false"
+
+      - name: Check formatting (black)
+        run: black --check app
+
+      - name: Check lint (flake8)
+        run: flake8 app
